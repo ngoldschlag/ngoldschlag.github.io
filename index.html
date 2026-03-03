@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nathan Goldschlag</title>
+  <meta name="description" content="Nathan Goldschlag — Director of Research at the Economic Innovation Group. Research on business dynamics, innovation, AI, and entrepreneurship.">
+  <meta property="og:title" content="Nathan Goldschlag">
+  <meta property="og:description" content="Director of Research at the Economic Innovation Group. Research on business dynamics, innovation, AI, and entrepreneurship.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ngoldschlag.github.io">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nathan Goldschlag">
+  <meta name="twitter:description" content="Director of Research at the Economic Innovation Group. Research on business dynamics, innovation, AI, and entrepreneurship.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23333'/><text x='50' y='66' font-family='system-ui' font-size='48' font-weight='700' fill='white' text-anchor='middle'>NG</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      background: #fff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #111;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #555;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero / Bio */
+    .hero {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      padding: 3rem 0 2.5rem;
+    }
+
+    .hero-photo {
+      flex-shrink: 0;
+    }
+
+    .hero-photo img {
+      width: 180px;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .hero-text h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-text .title {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text .bio {
+      color: #444;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: #f3f4f6;
+      color: #555;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .icon-btn:hover {
+      background: #e5e7eb;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .icon-btn-label {
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .icon-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Sections */
+    section {
+      padding: 2.5rem 0;
+      border-top: 1px solid #e5e7eb;
+      scroll-margin-top: 64px;
+    }
+
+    section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Publications */
+    .pub-list {
+      list-style: none;
+    }
+
+    .pub-item {
+      padding: 0.75rem 0 0.75rem 1rem;
+      border-left: 3px solid #e5e7eb;
+      margin-bottom: 1rem;
+    }
+
+    .pub-item:hover {
+      border-left-color: #2563eb;
+    }
+
+    .pub-year {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    .pub-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #111;
+    }
+
+    .pub-title a {
+      color: #111;
+    }
+
+    .pub-title a:hover {
+      color: #2563eb;
+    }
+
+    .pub-authors {
+      display: inline;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .pub-venue {
+      display: inline;
+      font-size: 0.85rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    .pub-venue::before {
+      content: " · ";
+      font-style: normal;
+    }
+
+    .pub-meta {
+      margin-top: 0.15rem;
+    }
+
+    .pub-desc {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 0.15rem;
+    }
+
+    /* Writing list */
+    .writing-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .writing-list li {
+      font-size: 0.95rem;
+      padding: 0.4rem 0;
+    }
+
+    .writing-list li::before {
+      content: "\2192";
+      margin-right: 0.5rem;
+      color: #bbb;
+    }
+
+    .writing-list a {
+      font-weight: 500;
+    }
+
+    .writing-list .coauthor {
+      color: #888;
+      font-size: 0.85rem;
+      margin-left: 0.3rem;
+    }
+
+    .pub-links {
+      margin-top: 0.3rem;
+      font-size: 0.8rem;
+    }
+
+    .pub-links a {
+      margin-right: 0.75rem;
+    }
+
+    /* Datasets */
+    .dataset-list {
+      list-style: none;
+    }
+
+    .dataset-item {
+      padding: 0.6rem 0;
+    }
+
+    .dataset-item + .dataset-item {
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .dataset-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .dataset-desc {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.15rem;
+    }
+
+    /* Press */
+    .press-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .press-paper {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #111;
+      margin-bottom: 0.4rem;
+    }
+
+    .press-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+    }
+
+    .press-links li {
+      font-size: 0.85rem;
+    }
+
+    /* Placeholder */
+    .placeholder {
+      color: #999;
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 2rem 0;
+      text-align: center;
+      color: #999;
+      font-size: 0.8rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .nav-inner {
+        height: 48px;
+      }
+
+      .nav-name {
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+
+      .hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 0 2rem;
+        gap: 1.5rem;
+      }
+
+      .hero-photo img {
+        width: 140px;
+        height: 140px;
+      }
+
+      .hero-text h1 {
+        font-size: 1.4rem;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      section {
+        padding: 2rem 0;
+        scroll-margin-top: 56px;
+      }
+
+      section h2 {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+      }
+
+      .pub-item {
+        padding: 0.6rem 0 0.6rem 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .pub-title {
+        font-size: 0.9rem;
+      }
+
+      .pub-meta {
+        margin-top: 0.1rem;
+      }
+
+      .pub-authors, .pub-venue {
+        font-size: 0.8rem;
+      }
+
+      .pub-desc {
+        font-size: 0.8rem;
+      }
+
+      .writing-list li {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Nathan Goldschlag</span>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#datasets">Datasets</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Bio -->
+  <div class="hero">
+    <div class="hero-photo">
+      <img src="images/headshot-400.jpg" alt="Nathan Goldschlag">
+    </div>
+    <div class="hero-text">
+      <h1>Nathan Goldschlag</h1>
+      <p class="title">Director of Research, <a href="https://eig.org/" target="_blank" rel="noopener">Economic Innovation Group</a></p>
+      <p class="bio">My research focuses on applied microeconomics of business dynamics, innovation, artificial intelligence, knowledge diffusion, R&D, and entrepreneurship.</p>
+      <div class="hero-actions">
+        <a class="icon-btn icon-btn-label" href="cv/goldschlag-cv.pdf" title="Download CV">CV</a>
+
+        <a class="icon-btn" href="https://x.com/ngoldschlag" target="_blank" rel="noopener" title="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/ngoldschlag/" target="_blank" rel="noopener" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a class="icon-btn" href="https://scholar.google.com/citations?user=mD5KuWMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" title="Google Scholar"><svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-2a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"/><path d="M0 11.5L12 2l12 9.5h-5v.5H5v-.5z"/></svg></a>
+        <a class="icon-btn" href="https://agglomerations.substack.com" target="_blank" rel="noopener" title="Substack"><svg viewBox="0 0 24 24"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Research -->
+  <section id="research">
+    <h2>Research</h2>
+    <ul class="pub-list">
+
+      <!-- 2025 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/ces-chapter.pdf">Measuring Artificial Intelligence Use by Businesses</a> <span class="pub-year">2025</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Dinlersoz, Foster, Haltiwanger</div> <div class="pub-venue">CES 2024 Annual Report</div></div>
+        <div class="pub-desc">Documents how the Census Bureau measures business AI use, synthesizing early evidence across surveys and administrative data.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/growth-harder-not-ideas.pdf" target="_blank" rel="noopener">Growth is Getting Harder to Find, Not Ideas</a> <span class="pub-year">2025</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Fort, Liang, Schott, Zolas</div></div>
+        <div class="pub-desc">Patents per R&D dollar and growth per patent are not declining; slower growth reflects factors beyond ideas.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/early-joiners.pdf">Early Joiners and Startup Performance</a> <span class="pub-year">2025</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Choi, Haltiwanger, Kim</div> <div class="pub-venue">Review of Economics and Statistics</div></div>
+        <div class="pub-desc">Non-founder early employees are pivotal to startup success, and losing one has long-run negative effects.</div>
+        <div class="pub-links"><a href="papers/early-joiners-appendix.pdf">Appendix</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/firm-growth-stagnation.pdf">Firm Growth and Stagnation in the United States: Key Trends and New Data Opportunities</a> <span class="pub-year">2025</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Kim, Choi, Haltiwanger</div> <div class="pub-venue">Strategic Management Journal</div></div>
+        <div class="pub-desc">Introduces new public data showing the dynamics of high-growth and stagnating firms.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/recon-reid-2010cen.pdf" target="_blank" rel="noopener">The 2010 Census Confidentiality Protections Failed, Here's How and Why</a> <span class="pub-year">2025</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Abowd, Adams, Ashmead, Darais, Dey, Garfinkel, Kifer, Leclerc, Lew, Moore, Rodriguez, Tadros, Vilhuber</div> <div class="pub-venue">Harvard Data Science Review</div></div>
+        <div class="pub-desc">Demonstrates that published tables enabled large-scale reconstruction of confidential 2010 Census records.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/measuring-inventors.pdf">Measuring the Characteristics and Employment Dynamics of U.S. Inventors</a> <span class="pub-year">2025</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Akcigit</div> <div class="pub-venue">Journal of Economic Growth</div></div>
+        <div class="pub-desc">Creates linked microdata to document who inventors are, where they work, and what they earn.</div>
+      </li>
+
+
+      <!-- 2024 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/ai-tasks-jobs.pdf">The Impact of AI on the Workforce: Tasks versus Jobs?</a> <span class="pub-year">2024</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Bonney, Breaux, Buffington, Dinlersoz, Foster, Haltiwanger, Kroff, Savage</div> <div class="pub-venue">Economics Letters</div></div>
+        <div class="pub-desc">AI adoption is reshaping tasks far more than it is reducing employment.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/tracking-ai-btos.pdf" target="_blank" rel="noopener">Tracking Firm Use of AI in Real Time: A Snapshot from the Business Trends and Outlook Survey</a> <span class="pub-year">2024</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Bonney, Breaux, Buffington, Dinlersoz, Foster, Haltiwanger, Kroff, Savage</div> </div>
+        <div class="pub-desc">Real-time survey data show rapid but still limited AI diffusion with modest employment effects.</div>
+      </li>
+
+      <!-- 2023 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/advanced-tech-selection.pdf">Advanced Technology Adoption: Selection or Causal Effects?</a> <span class="pub-year">2023</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Acemoglu, Anderson, Beede, Buffington, Childress, Dinlersoz, Foster, Haltiwanger, Kroff, Restrepo, Zolas</div> <div class="pub-venue">AEA Papers and Proceedings</div></div>
+        <div class="pub-desc">Large firms adopt automation because they are already large and growing, not because adoption causes growth.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/disclosure-risk-assessment.pdf" target="_blank" rel="noopener">An In-Depth Examination of Requirements for Disclosure Risk Assessment</a> <span class="pub-year">2023</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Jarmin, Abowd, Ashmead, Cumings-Menon, Hawes, Keller, Kifer, Leclerc, Reiter, Rodriguez, Schmutte, Velkoff, Zhuravlev</div> <div class="pub-venue">Proceedings of the National Academy of Sciences</div></div>
+        <div class="pub-desc">No disclosure risk framework satisfies all desiderata, but counterfactual approaches perform well.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/role-of-trademarks.pdf">On The Role of Trademarks: From Micro Evidence to Macro Outcomes</a> <span class="pub-year">2023</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Dinlersoz, Yorukoglu, Zolas</div></div>
+        <div class="pub-desc">Trademarks raise variety, quality, and welfare, while also increasing market concentration.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/where-have-talents-gone.pdf">Where Have All the "Creative Talents" Gone? Employment Dynamics of US Inventors</a> <span class="pub-year">2023</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Akcigit</div></div>
+        <div class="pub-desc">Inventors are shifting to large incumbents, earning more but producing fewer innovations.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/robothubs_pp.pdf">Robot Hubs: The Skewed Distribution of Robots in U.S. Manufacturing</a> <span class="pub-year">2023</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Brynjolfsson, Buffington, Li, Miranda, Seamans</div> <div class="pub-venue">AEA Papers and Proceedings</div></div>
+        <div class="pub-desc">Robot adoption is highly concentrated geographically in a small set of manufacturing hubs.</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/robothubs.pdf">The Characteristics and Geographic Distribution of Robot Hubs in U.S. Manufacturing Establishments</a> <span class="pub-year">2023</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Brynjolfsson, Buffington, Li, Miranda, Seamans</div></div>
+        <div class="pub-desc">Robotics intensity is driven by establishment size and clustered in specialized local ecosystems.</div>
+      </li>
+
+      <!-- 2022 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/automation-workforce-abs2019.pdf">Automation and the Workforce: A Firm-Level View from the 2019 Annual Business Survey</a> <span class="pub-year">2022</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Acemoglu, Anderson, Beede, Buffington, Childress, Dinlersoz, Foster, Haltiwanger, Kroff, Restrepo, Zolas</div></div>
+        <div class="pub-desc">Automation is uneven across firms and accounts for 20-30% of the higher labor productivity of large firms in an industry.</div>
+      </li>
+
+      <!-- 2021 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/redesign-lbd.pdf">Redesigning the Longitudinal Business Database</a> <span class="pub-year">2021</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Chow, Fort, Goetz, Lawrence, Perlman, Stinson, White</div> </div>
+        <div class="pub-desc">Details the redesign of the LBD, improving measurement of U.S. firm entry, exit, and growth.</div> 
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/research-experience-human-capital.pdf">Research Experience as Human Capital in New Business Outcomes</a> <span class="pub-year">2021</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Jarmin, Lane, Zolas</div> <div class="pub-venue">Measuring and Accounting for Innovation in the 21st Century (book chapter)</div></div>
+        <div class="pub-desc">High-R&D human capital individuals select into riskier startups with "up-or-out" dynamics.</div> 
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/anatomy-of-trademarks.pdf">An Anatomy of U.S. Firms Seeking Trademark Registration</a> <span class="pub-year">2021</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Dinlersoz, Myers, Zolas</div> <div class="pub-venue">Measuring and Accounting for Innovation in the 21st Century (book chapter)</div></div>
+        <div class="pub-desc">Trademark filing predicts subsequent firm growth and complements patent-based innovation measures.</div> 
+      </li>
+
+      <!-- 2020 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/advanced-tech-abs2017.pdf">Advanced Technologies Adoption and Use by U.S. Firms: Evidence from the Annual Business Survey</a> <span class="pub-year">2020</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Zolas, Kroff, Brynjolfsson, McElheran, Beede, Buffington, Foster, Dinlersoz</div> </div>
+        <div class="pub-desc">Frontier technologies are rare but concentrated in large firms, amplifying worker exposure.</div> 
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/bds-high-tech.pdf">Business Dynamics of High Tech Industries</a> <span class="pub-year">2020</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Miranda</div> <div class="pub-venue">Journal of Economics &amp; Management Strategy</div></div>
+        <div class="pub-desc">Introduces new BDS tables for High Tech industries, showing their outsized role in job creation.</div> 
+      </li>
+
+      <!-- 2019 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/tracking-tech.pdf">Tracking the Technological Composition of Industries with Algorithmic Patent Concordances</a> <span class="pub-year">2019</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Lybbert, Zolas</div> <div class="pub-venue">Economics of Innovation and New Technology</div></div>
+        <div class="pub-desc">Builds patent-industry concordances to better measure technological change across sectors.</div> 
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/proximity-economic-activity.pdf">Proximity and Economic Activity: An Analysis of Vendor-University Transactions</a> <span class="pub-year">2019</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Lane, Weinberg, Zolas</div> <div class="pub-venue">Journal of Regional Science</div></div>
+        <div class="pub-desc">Research spending is locally concentrated and deepens firm-university linkages.</div> 
+      </li>
+
+      <!-- 2018 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/squeeze.pdf">Squeezing More Out of Your Data: Business Record Linkage with Python</a> <span class="pub-year">2018</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Cuffe</div></div>
+        <div class="pub-desc">Introduces scalable machine-learning tools for high-quality business record linkage.</div> 
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/regulation-dynamism.pdf" target="_blank" rel="noopener">Is Federal Regulation to Blame for the Decline in American Entrepreneurship?</a> <span class="pub-year">2018</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Tabarrok</div> <div class="pub-venue">Economic Policy</div></div>
+        <div class="pub-desc">Regulatory changes do not explain the broad-based decline in business dynamism.</div> 
+      </li>
+
+      <!-- 2017 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/just-passing.pdf">Just Passing Through: Characterizing U.S. Pass-Through Business Owners</a> <span class="pub-year">2017</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Kim, McCue</div></div>
+        <div class="pub-desc">Uses administrative tax data to profile pass-through business owners and their firms.</div> 
+      </li>
+
+      <!-- 2015 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/wrapping-it-up.pdf" target="_blank" rel="noopener">Wrapping it up in a person: Examining employment and earnings outcomes for Ph.D. recipients</a> <span class="pub-year">2015</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Zolas, Jarmin, Stephan, Owen-Smith, Rosen, Allen, Weinberg, Lane</div> <div class="pub-venue">Science, 350(6266), 1367&ndash;1371</div></div>
+        <div class="pub-desc">Documents the flow of Ph.D.s on federally funded grants to high-wage industry roles, especially in High Tech sectors.</div> 
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/is-entrep-in-decline.pdf">Is Entrepreneurship in Decline?</a> <span class="pub-year">2015</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Tabarrok</div> <div class="pub-venue">Understanding the Growth Slowdown, Cato Institute Press (book chapter)</div></div>
+        <div class="pub-desc">Declining churn has many faces, some less worrisome than others.</div> 
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- Other Writing -->
+  <section id="writing">
+    <h2>Other Writing</h2>
+    <ul class="writing-list">
+
+      <li><a href="https://agglomerations.substack.com/p/ai-and-the-real-bottlenecks-to-growth" target="_blank" rel="noopener">AI and the Real Bottlenecks to Growth</a><span class="coauthor">(with Ozimek)</span></li>
+
+      <li><a href="https://agglomerations.substack.com/p/how-many-businesses-are-using-ai" target="_blank" rel="noopener">How Many Businesses Are Using AI?</a></li>
+
+      <li><a href="https://www.census.gov/library/stories/2026/01/inventors-and-patents.html" target="_blank" rel="noopener">Who Are the Inventors and Firms That Generate the Most Patents?</a></li>
+
+      <li><a href="https://agglomerations.substack.com/p/peeling-the-ai-anxiety-onion" target="_blank" rel="noopener">Peeling the AI Anxiety Onion</a></li>
+
+      <li><a href="https://agglomerations.substack.com/p/fat-bear-week-and-the-fate-of-the" target="_blank" rel="noopener">Fat Bear Week and the Fate of the World</a> <span class="coauthor">(with Glasner)</span> </li>
+
+      <li><a href="https://agglomerations.substack.com/p/us-statistical-agencies-deserve-support" target="_blank" rel="noopener">US statistical agencies deserve support and funding. They also need to reform</a>  </li>
+
+      <li><a href="https://eig.org/ai-and-jobs-the-final-word/" target="_blank" rel="noopener">AI and Jobs: The Final Word (Until the Next One)</a> <span class="coauthor">(with Eckhardt)</span> </li>
+
+      <li><a href="https://agglomerations.substack.com/p/ai-to-steer-or-not-to-steer" target="_blank" rel="noopener">AI: To Steer or Not To Steer</a>  </li>
+
+      <li><a href="https://www.census.gov/library/stories/2023/02/where-in-the-united-states-are-the-high-tech-jobs.html" target="_blank" rel="noopener">High-Tech Industries Are Concentrated in Five Coastal Metro Areas</a> <span class="coauthor">(with Chow)</span> </li>
+
+    </ul>
+  </section>
+
+  <!-- Datasets & Resources -->
+  <section id="datasets">
+    <h2>Datasets &amp; Resources</h2>
+    <ul class="dataset-list">
+      <li class="dataset-item">
+        <div class="dataset-title"><a href="https://www.census.gov/programs-surveys/ces/data/public-use-data/experimental-bds/bds-high-growth.html" target="_blank" rel="noopener">Business Dynamics Statistics of High Growth Firms</a></div>
+        <div class="dataset-desc">Public-use data on high growth firm dynamics from the U.S. Census Bureau.</div>
+      </li>
+      <li class="dataset-item">
+        <div class="dataset-title"><a href="https://www.census.gov/programs-surveys/ces/data/public-use-data/experimental-bds/bds-high-tech/data.html" target="_blank" rel="noopener">Business Dynamics Statistics of High Tech Industries</a></div>
+        <div class="dataset-desc">Public-use data on business dynamics in high-tech industries.</div>
+      </li>
+      <li class="dataset-item">
+        <div class="dataset-title">Patent Concordances Crosswalks</div>
+        <div class="dataset-desc">Algorithmic patent concordances mapping patent classifications to industry codes. Data files: <a href="data/alp/ALP_CPC_Patent_v1602.zip">CPC v1602</a>, <a href="data/alp/ALP_CPC_Patent_v1603.zip">CPC v1603</a>, <a href="data/alp/ALP_USPC_Patent_v1601.zip">USPC v1601</a>.</div>
+      </li>
+      <li class="dataset-item">
+        <div class="dataset-title"><a href="https://www.dropbox.com/s/2g45fw5dxwdaqvj/reg_dyn.zip?dl=0" target="_blank" rel="noopener">Regulation &amp; Dynamism Data and Code</a></div>
+        <div class="dataset-desc">Replication data and code for research on regulation and business dynamism.</div>
+      </li>
+      <li class="dataset-item">
+        <div class="dataset-title"><a href="https://github.com/ngoldschlag/HighTechIndustries" target="_blank" rel="noopener">High Tech Industries Code</a></div>
+        <div class="dataset-desc">Code for classifying industries by STEM occupation concentration.</div>
+      </li>
+    </ul>
+  </section>
+
+
+</div>
+
+<footer>
+  <div class="container">
+    &copy; 2025 Nathan Goldschlag
+  </div>
+</footer>
+
