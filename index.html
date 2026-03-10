@@ -355,6 +355,84 @@
       font-size: 0.8rem;
     }
 
+    /* Carousel */
+    .carousel {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .carousel-track {
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+    }
+
+    .carousel-track img {
+      width: 100%;
+      display: none;
+    }
+
+    .carousel-track img.active {
+      display: block;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #e5e7eb;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: #555;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .carousel-btn:hover {
+      background: #f3f4f6;
+      color: #111;
+    }
+
+    .carousel-btn-left {
+      left: -18px;
+    }
+
+    .carousel-btn-right {
+      right: -18px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d1d5db;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s;
+    }
+
+    .carousel-dot.active {
+      background: #2563eb;
+    }
+
     /* Mobile */
     @media (max-width: 640px) {
       .nav-inner {
@@ -428,6 +506,14 @@
       .writing-list li {
         font-size: 0.9rem;
       }
+
+      .carousel-btn-left {
+        left: 4px;
+      }
+
+      .carousel-btn-right {
+        right: 4px;
+      }
     }
   </style>
 </head>
@@ -466,10 +552,48 @@
     </div>
   </div>
 
+  <!-- Figure Carousel -->
+  <section id="charts">
+    <h2>AI Charts</h2>
+  </section>
+  <div class="carousel">
+    <button class="carousel-btn carousel-btn-left" aria-label="Previous figure">&#8249;</button>
+    <div class="carousel-track">
+      <img src="images/btos-national-ai.png" alt="Percent of U.S. Businesses Using AI">
+      <img src="images/btos-sector-ai.png" alt="Sectoral Change in AI Use">
+    </div>
+    <button class="carousel-btn carousel-btn-right" aria-label="Next figure">&#8250;</button>
+    <div class="carousel-dots"></div>
+  </div>
+
+
+  <!-- Business Dynamism Carousel -->
+  <section id="dynamism-charts">
+    <h2>Business Dynamism Charts</h2>
+  </section>
+  <div class="carousel">
+    <button class="carousel-btn carousel-btn-left" aria-label="Previous figure">&#8249;</button>
+    <div class="carousel-track">
+      <img src="images/bfs-now.png" alt="BFS Business Entry">
+      <img src="images/startup-rate.png" alt="BFS Business Entry">
+      <img src="images/bfs-estab-compare.png" alt="BFS Reliability, Estabs">
+      <img src="images/bfs-firm-compare.png" alt="BFS Reliability, Firms">
+    </div>
+    <button class="carousel-btn carousel-btn-right" aria-label="Next figure">&#8250;</button>
+    <div class="carousel-dots"></div>
+  </div>
+
   <!-- Research -->
   <section id="research">
     <h2>Research</h2>
     <ul class="pub-list">
+
+        <!-- 2026 -->
+      <li class="pub-item">
+        <div class="pub-title"><a href="papers/ai-scientists.pdf">Attention (And Money) Is All You Need: Why Universities Are Struggling to Keep AI Talent</a> <span class="pub-year">2026</span></div>
+        <div class="pub-meta"><div class="pub-authors">with Akcitig, Chikis, and Dinlersoz</div> <div class="pub-venue">CES 2024 Annual Report</div></div>
+        <div class="pub-desc">Documents the shift of AI talent from academia to the private sector, driven in part by enormous wage top-end wage premia.</div>
+      </li>
 
       <!-- 2025 -->
       <li class="pub-item">
@@ -715,4 +839,35 @@
     &copy; 2025 Nathan Goldschlag
   </div>
 </footer>
+
+<script>
+document.querySelectorAll('.carousel').forEach(function(carousel) {
+  var track = carousel.querySelector('.carousel-track');
+  var imgs = track.querySelectorAll('img');
+  var dots = carousel.querySelector('.carousel-dots');
+  var idx = 0;
+
+  if (imgs.length === 0) return;
+  imgs[0].classList.add('active');
+
+  imgs.forEach(function(_, i) {
+    var dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to figure ' + (i + 1));
+    dot.addEventListener('click', function() { goTo(i); });
+    dots.appendChild(dot);
+  });
+
+  function goTo(n) {
+    imgs[idx].classList.remove('active');
+    dots.children[idx].classList.remove('active');
+    idx = (n + imgs.length) % imgs.length;
+    imgs[idx].classList.add('active');
+    dots.children[idx].classList.add('active');
+  }
+
+  carousel.querySelector('.carousel-btn-left').addEventListener('click', function() { goTo(idx - 1); });
+  carousel.querySelector('.carousel-btn-right').addEventListener('click', function() { goTo(idx + 1); });
+});
+</script>
 
