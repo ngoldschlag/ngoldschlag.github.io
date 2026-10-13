@@ -194,6 +194,42 @@
       margin-bottom: 1.5rem;
     }
 
+    /* Recent Writing */
+    .writing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .writing-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      color: #111;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .writing-item:hover {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .writing-item img {
+      width: 100%;
+      height: 140px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      transition: transform 0.15s ease;
+    }
+
+    .writing-item:hover img {
+      transform: scale(1.03);
+    }
+
     /* Publications */
     .pub-list {
       list-style: none;
@@ -518,6 +554,19 @@
         margin-bottom: 1rem;
       }
 
+      .writing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .writing-item {
+        font-size: 0.8rem;
+      }
+
+      .writing-item img {
+        height: 80px;
+      }
+
       .pub-item {
         padding: 0.6rem 0 0.6rem 0.75rem;
         margin-bottom: 0.75rem;
@@ -598,6 +647,29 @@
       </div>
     </div>
   </div>
+
+  <!-- Recent Writing -->
+  <section id="writing">
+    <h2>Recent Writing</h2>
+    <div class="writing-grid">
+      <a class="writing-item" href="https://eig.org/ai-and-entrepreneurship/" target="_blank" rel="noopener">
+        <img src="images/ai-entrep-logo.png" alt="AI &amp; Entrepreneurship">
+        <span>AI &amp; Entrepreneurship</span>
+      </a>
+      <a class="writing-item" href="https://eig.org/measuring-ai/" target="_blank" rel="noopener">
+        <img src="images/ai-measure-logo.png" alt="Measuring AI">
+        <span>Measuring AI</span>
+      </a>
+      <a class="writing-item" href="https://agglomerations.eig.org/p/ai-versus-the-china-shock" target="_blank" rel="noopener">
+        <img src="images/ai-china-logo.png" alt="AI vs. China Shock">
+        <span>AI vs. China Shock</span>
+      </a>
+      <a class="writing-item" href="https://agglomerations.eig.org/p/how-students-and-recent-grads-are" target="_blank" rel="noopener">
+        <img src="images/ai-degree-logo.png" alt="AI, Students, Recent Grads">
+        <span>AI, Students, Recent Grads</span>
+      </a>
+    </div>
+  </section>
 
   <!-- AI and Firms Carousel -->
   <section id="charts">
