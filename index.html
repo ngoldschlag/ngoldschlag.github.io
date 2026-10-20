@@ -439,6 +439,7 @@
       border-radius: 8px;
       border: 1px solid #e5e7eb;
       background: #fff;
+      touch-action: pan-y;
     }
 
     .carousel-track img {
@@ -470,6 +471,13 @@
       transition: background 0.2s, color 0.2s;
     }
 
+    /* Enlarge the tap target beyond the visible circle */
+    .carousel-btn::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+    }
+
     .carousel-btn:hover {
       background: #f3f4f6;
       color: #111;
@@ -486,22 +494,32 @@
     .carousel-dots {
       display: flex;
       justify-content: center;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
+      margin-top: 0.25rem;
     }
 
+    /* Button is a 24px tap target; the visible dot is drawn inside it */
     .carousel-dot {
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-dot::before {
+      content: '';
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: #d1d5db;
-      border: none;
-      cursor: pointer;
-      padding: 0;
       transition: background 0.2s;
     }
 
-    .carousel-dot.active {
+    .carousel-dot.active::before {
       background: #2563eb;
     }
 
@@ -1124,6 +1142,31 @@ document.querySelectorAll('.carousel-wrapper').forEach(function(wrapper) {
 
   carousel.querySelector('.carousel-btn-left').addEventListener('click', function() { goTo(idx - 1); });
   carousel.querySelector('.carousel-btn-right').addEventListener('click', function() { goTo(idx + 1); });
+
+  // Swipe left/right on touch screens
+  var startX = null, startY = null, swiped = false;
+  track.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    swiped = false;
+  }, { passive: true });
+  track.addEventListener('touchend', function(e) {
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    var dy = e.changedTouches[0].clientY - startY;
+    startX = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      swiped = true;
+      goTo(dx < 0 ? idx + 1 : idx - 1);
+    }
+  });
+  // Don't let a swipe also trigger the image's link
+  track.addEventListener('click', function(e) {
+    if (swiped) {
+      e.stopPropagation();
+      swiped = false;
+    }
+  }, true);
 });
 </script>
 
