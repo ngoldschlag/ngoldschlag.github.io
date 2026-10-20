@@ -414,6 +414,7 @@
       position: relative;
       flex: 1;
       min-width: 0;
+      container-type: inline-size;
     }
 
     .carousel-text {
@@ -451,9 +452,11 @@
       display: block;
     }
 
+    /* Fixed offset (relative to carousel width) so arrows don't move as chart heights change */
     .carousel-btn {
       position: absolute;
-      top: 50%;
+      top: 180px;
+      top: 30cqw;
       transform: translateY(-50%);
       background: rgba(255, 255, 255, 0.9);
       border: 1px solid #e5e7eb;
